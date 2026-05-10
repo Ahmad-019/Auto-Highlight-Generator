@@ -1,8 +1,10 @@
 # To be installed libraries for the project
+streamlit
 pandas
+plotly
 numpy
-matplotlib
-scikit-learn
-seaborn
-xgboost
-# etc. (add any other libraries you need for your project)
+google-api-python-client
+transformers
+torch
+deep-translator
+tf-keras
