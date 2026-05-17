@@ -1,4 +1,4 @@
-# [Auto Highlight Generator]
+# Auto Highlight Generator
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 
 ---
 
-### **[Auto Highlight Generator: AI-Powered BI Video Analytics]**
+### **Auto Highlight Generator: AI-Powered BI Video Analytics**
 
 ---
 
