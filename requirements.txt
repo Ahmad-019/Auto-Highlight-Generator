@@ -1,10 +1,13 @@
 # To be installed libraries for the project
 streamlit
 pandas
-plotly
 numpy
+plotly
 google-api-python-client
 transformers
 torch
 deep-translator
-tf-keras
+matplotlib
+wordcloud
+arabic-reshaper
+python-bidi
