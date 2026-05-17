@@ -2,7 +2,6 @@
 
 <div align="center">
 
-
 **University of Petra** **Faculty of Administrative and Financial Sciences** **Department of Business Intelligence and Data Analytics**
 
 ---
@@ -18,7 +17,7 @@ Fares Sami Haddad | 202210768
 
 **Course: 307498 – Graduation Project** **Second Semester, 2025/2026**
 
-**Date** May 11, 2026
+**Date** May 17, 2026
 
 <br>
 <img src="images/Screenshot%202026-05-11%20020500.png" width="800">
@@ -44,7 +43,7 @@ Fares Sami Haddad | 202210768
 ---
 
 ## 1. Abstract
-The "Auto Highlight Generator" is a sophisticated Business Intelligence solution designed to automate the labor-intensive process of video content curation. By integrating large-scale data harvesting via the YouTube Data API v3 with advanced Natural Language Processing (NLP), the system identifies high-engagement segments known as "Golden Moments." Unlike traditional editing, our approach relies on real-time audience sentiment and emotional density to pinpoint viral potential. The architecture features a multi-layered processing engine that handles bilingual data, cleanses noise, and applies weighted scoring algorithms to bridge the gap between raw unstructured data and strategic content production.
+The "Auto Highlight Generator" is a sophisticated Business Intelligence solution designed to automate the labor-intensive process of video content curation. By integrating large-scale data harvesting via the YouTube Data API v3 with advanced Natural Language Processing (NLP), the system identifies high-engagement segments known as "Golden Moments." Unlike traditional editing, our approach relies on real-time audience sentiment and emotional density to pinpoint viral potential. The architecture features a multi-layered processing engine that handles bilingual data, cleanses noise, and applies weighted scoring algorithms to bridge the gap between raw unstructured data and strategic content production. The latest version introduces an embedded in-app video player, AI Strategic Recommendations, a Smart Word Cloud, and an Analysis History tracker — transforming the system into a fully self-contained content intelligence platform.
 
 ---
 
@@ -61,6 +60,7 @@ In the modern digital landscape, content creators face significant "Content Over
 * **Sentiment Profiling:** Implement a cross-lingual NLP engine capable of classifying five core emotions: Funny, Happy, Sad, Controversial, and Inspirational — with full Arabic dialect support.
 * **Algorithmic Scoring:** Develop a composite Golden Score based on comment frequency, emotional heat density, and emotion diversity bonus to rank video segments objectively.
 * **Operational Value:** Provide an interface where highlights are presented with direct, clickable temporal links that open the exact moment in the source video.
+* **Content Intelligence:** Generate AI-powered strategic recommendations and visual word analysis to guide creators on their next content decision.
 
 ---
 
@@ -95,18 +95,24 @@ The ETL layer handles the inherent noise of social media data, such as slang, em
 * Conversion of timestamp strings to total integer seconds
 * Language detection and translation of Arabic comments to English
 * Truncation of comment text to 512 tokens for transformer compatibility
+* Stop-word removal (English + Arabic) for Smart Word Cloud generation
 
 ---
 
 ## 7. Data Visualization and Insights
-To transform raw scores into actionable intelligence, we employ **Plotly** for dynamic visualization. The system generates two high-impact visuals that allow analysts to interpret audience behavior over time.
+To transform raw scores into actionable intelligence, we employ **Plotly** and **Matplotlib** for dynamic visualization. The system generates multiple high-impact visuals that allow analysts to interpret audience behavior over time.
 
 * **Engagement Heatmap:** A temporal histogram mapping emotional intensity across the video duration in minutes, color-coded by emotion type. This allows editors to visually identify clustering of audience reactions.
 * **Emotion Breakdown Chart:** A macroscopic bar chart providing a full view of the video's emotional DNA across all five sentiment categories.
+* **Smart Word Cloud:** A frequency-based word cloud generated from all timestamped comments after stop-word removal, revealing the dominant topics and themes driving audience engagement.
 
 <p align="center">
-  <img src="images/Screenshot%202026-05-11%20020322.png" width="48%">
-  <img src="images/Screenshot%202026-05-11%20020428.png" width="48%">
+  <img src="images/Screenshot%202026-05-11%20020322.png" width="70%">
+</p>
+
+<p align="center">
+  <img src="images/Screenshot%202026-05-17%20161108.png" width="48%">
+  <img src="images/Screenshot%202026-05-17%20161127.png" width="48%">
 </p>
 
 ---
@@ -114,33 +120,110 @@ To transform raw scores into actionable intelligence, we employ **Plotly** for d
 ## 8. Dashboard Design & Business Insights
 The dashboard is engineered with a professional **"Cherry Red"** theme using **Streamlit**, following a Utility-First design philosophy where every element is positioned to reduce cognitive load for the end user.
 
+---
+
 #### **Sidebar Controls (Operational Input)**
+
 The sidebar gives the user full control over the analysis before it begins.
 
-* **YouTube URL Input:** The user pastes any YouTube video link. The system automatically extracts the Video ID using Regex.
-* **Analysis Speed / Depth Selector:** A radio button control with three options — Quick Sample (5k comments), Standard Mode (15k comments), and Deep Scan (50k comments) — allowing the user to balance speed against analytical depth depending on the video's engagement level.
+---
+
+**📌 YouTube URL Input**
+
+The user pastes any YouTube video link. The system automatically extracts the Video ID using Regex.
+
+---
+
+**📌 Analysis Speed / Depth Selector**
+
+A radio button control with three options — Quick Sample (5k comments), Standard Mode (15k comments), and Deep Scan (50k comments) — allowing the user to balance speed against analytical depth depending on the video's engagement level.
+
 ![Analysis Speed Selector](images/Screenshot%202026-05-11%20015837.png)
 
-* **Target Emotion Filter:** A six-option radio selector (All Emotions, Funny, Happy, Sad, Controversial, Inspirational) that allows editors to isolate a specific viral goal. For example, filtering for "Funny" moments to produce short-form Reels content.
+---
+
+**📌 Target Emotion Filter**
+
+A six-option radio selector (All Emotions, Funny, Happy, Sad, Controversial, Inspirational) that allows editors to isolate a specific viral goal. For example, filtering for "Funny" moments to produce short-form Reels content.
+
 ![Target Emotion Filter](images/Screenshot%202026-05-11%20015901.png)
 
-* **Intelligence Stack Panel:** A live status panel displaying the four active analytical components: NLP (Hybrid Sentiment), ETL (Dynamic Sampling API), ALGO (Composite Score Ranking), and HEAT (Emotion Intensity Weights).
+---
+
+**📌 Intelligence Stack Panel**
+
+A live status panel displaying the four active analytical components: NLP (Hybrid Sentiment), ETL (Dynamic Sampling API), ALGO (Composite Score Ranking), and HEAT (Emotion Intensity Weights).
+
+---
+
+**📌 Analysis History Tracker**
+
+A collapsible sidebar panel that logs every video analyzed during the session, displaying the Video ID and timestamp of analysis. A "Clear History" button resets the session log.
+
+![Analysis History Panel](images/Screenshot%202026-05-17%20161203.png)
+
+---
 
 #### **Main Analytics Panel (Visual Intelligence)**
-* **KPI Metric Cards:** Four executive summary cards showing Comments Sampled, Timestamped comments, Emotive Signals detected, and Analytical Confidence level.
+
+---
+
+**📊 KPI Metric Cards**
+
+Four executive summary cards showing Comments Sampled, Timestamped comments, Emotive Signals detected, and Analytical Confidence level.
+
 ![KPI Metric Cards](images/Screenshot%202026-05-11%20020232.png)
 
-* **Engagement Heatmap:** A Plotly temporal histogram showing emotional intensity across the video timeline in minutes, color-coded by emotion type.
-* **Emotion Breakdown Chart:** A bar chart providing a macroscopic view of the video's full emotional distribution across all five categories.
+---
+
+**📊 Engagement Heatmap**
+
+A Plotly temporal histogram showing emotional intensity across the video timeline in minutes, color-coded by emotion type.
+
+---
+
+**📊 Emotion Breakdown & Smart Word Cloud (Tabbed View)**
+
+A dual-tab panel — the first tab shows the Emotion Breakdown bar chart, and the second tab shows the Smart Word Cloud generated from the most frequent audience words after stop-word removal.
+
+---
 
 #### **The Golden Moments Cards**
+
 The system identifies and ranks the Top 3 highest-scoring segments, displayed as ranked cards: Peak Moment 👑, Runner-Up 🥈, and Third Spike 🥉. Each card displays the dominant emotion badge, comment count, emotion diversity count, and a composite score progress bar.
 
-Most critically, each card features a **Clickable Timestamp Link**. By utilizing the YouTube `?t=SECONDS` URL parameter, clicking the timestamp instantly opens the browser at the exact second of that moment in the source video.
-![Golden Moments Detection](images/Screenshot%202026-05-11%20020400.png)
+Each card features **two playback options:**
 
-* **UX Business Value:** This transforms the dashboard from a static report into an active production tool. An editor can go from raw URL input to verified highlight in under 60 seconds, with zero manual seeking required.
+* **⧉ OPEN YOUTUBE:** A clickable timestamp link that opens the browser at the exact second using `https://youtu.be/VIDEO_ID?t=SECONDS`.
+* **▶ PLAY IN-APP:** A button that syncs the embedded YouTube player directly inside the dashboard to the exact highlight second — no browser switching required.
+
+![Golden Moments Cards](images/Screenshot%202026-05-17%20161958.png)
+
 * **CSV Export:** A download button exports the Top 3 highlights as a `.csv` file containing Timestamp, Sentiment, Comment Count, and Composite Score — ready for integration into any video editing workflow.
+
+---
+
+#### **Embedded YouTube Player**
+
+A full YouTube video player is embedded directly inside the dashboard beneath the Golden Moment cards. Clicking **▶ PLAY IN-APP** on any highlight card syncs the player to that exact timestamp instantly, creating a seamless in-app review experience without leaving the dashboard.
+
+![Embedded YouTube Player](images/Screenshot%202026-05-17%20160913.png)
+
+---
+
+#### **AI Strategic Recommendation**
+
+After the analysis completes, the system automatically generates a written AI recommendation based on the dominant emotion detected. The recommendation provides a specific, actionable content strategy tailored to the video's emotional profile.
+
+| Dominant Emotion | Strategic Recommendation |
+| :--- | :--- |
+| **Funny** | Extract highlights for TikTok/Reels to maximize viral reach |
+| **Controversial** | Film a follow-up Q&A video within 48 hours to ride the algorithm |
+| **Inspirational** | Repurpose segments into motivational quotes for LinkedIn/Twitter |
+| **Happy** | Ask viewers to Like and Subscribe during highlight peaks |
+| **Sad** | Prioritize community management to build viewer loyalty |
+
+![AI Strategic Recommendation](images/Screenshot%202026-05-17%20161141.png)
 
 ---
 
@@ -153,7 +236,7 @@ A curated dictionary of Arabic dialect keywords and emojis is checked first. If 
 **Layer 2 — Transformer ML Engine (Fallback):**
 If no lexicon match is found, Arabic text is first translated to English using `deep-translator`, then passed to the **j-hartmann/emotion-english-distilroberta-base** HuggingFace Transformer model for classification.
 
-![Full Dashboard Sidebar](images/Screenshot%202026-05-11%20015548.png)
+![Full Dashboard View](images/Screenshot%202026-05-11%20015548.png)
 
 **The Composite Golden Score Formula:**
 
@@ -184,6 +267,7 @@ The technology stack was meticulously chosen to ensure high responsiveness and a
 | **Pandas** | SQL Alone | Enables complex in-memory scoring, filtering, and data transformation at high speed. |
 | **deep-translator** | googletrans | More stable and actively maintained library for production-level Arabic-to-English translation. |
 | **YouTube Data API v3** | Web Scraping | Official, rate-limited, and structured access to comment hierarchies with pagination support. |
+| **WordCloud + Matplotlib** | Manual frequency tables | Generates instant visual topic maps from thousands of comments with stop-word filtering. |
 
 ---
 
@@ -197,9 +281,13 @@ Hosted on **Render**, the system provides a production-ready environment for med
 2. Selects analysis depth based on the video's comment volume
 3. Optionally filters by a target emotion (e.g., "Funny" for Reels production)
 4. System fetches, cleans, classifies, and scores all comments automatically
-5. Top 3 Golden Moment cards are displayed with clickable timestamps
-6. Clicking a timestamp opens YouTube at the exact second using the format: `?t=SECONDS`
-![Golden Moments Detection Results](images/Screenshot%202026-05-11%20020400.png)
+5. Top 3 Golden Moment cards are displayed with two playback options
+6. Editor clicks **▶ PLAY IN-APP** to preview the highlight inside the dashboard instantly
+7. Or clicks **⧉ OPEN YOUTUBE** to open the exact timestamp in a new browser tab
+8. AI Strategic Recommendation provides the next content action to take
+9. Editor exports results as CSV for handoff to the editing team
+
+![Golden Moments Detection Results](images/Screenshot%202026-05-17%20161958.png)
 
 * **Business Benefit:** This eliminates all manual searching friction, enabling a "Scan-to-Edit" workflow that saves media agencies over 90% of manual highlight review time — transforming hours of work into under 60 seconds of automated analysis.
 
@@ -213,7 +301,10 @@ Key findings from testing across multiple video categories:
 * The composite scoring algorithm consistently surfaced moments that aligned with organically viral segments, validating the emotional heat weighting model.
 * The 3-minute spread enforcement proved essential — without it, all three highlights would frequently cluster within the same high-comment burst, reducing the practical value for editors.
 * Arabic dialect support via the hybrid lexicon-transformer engine successfully classified comments that a pure ML model would have misclassified due to translation ambiguity.
-* The Clickable Timestamp feature reduced highlight verification time from an average of 15–20 minutes of manual seeking to under 60 seconds per video.
+* The **▶ PLAY IN-APP** embedded player feature eliminated all context-switching, allowing editors to verify highlights without leaving the dashboard.
+* The Smart Word Cloud revealed dominant audience topics that were not visible from sentiment scores alone, providing an additional layer of content intelligence.
+* The AI Strategic Recommendation feature successfully mapped dominant emotions to actionable content strategies, reducing the need for manual data interpretation.
+* The Analysis History tracker enables session-level monitoring of multiple videos analyzed in one workflow.
 * The CSV export functionality enables direct integration into professional editing pipelines, making the tool viable for media agency use at scale.
 
 ---
@@ -225,3 +316,4 @@ Key findings from testing across multiple video categories:
 * Pandas Development Team. (2026). *Pandas: Powerful Python data analysis toolkit*. Retrieved from https://pandas.pydata.org
 * Plotly Technologies Inc. (2026). *Plotly Python graphing library*. Retrieved from https://plotly.com/python
 * Deep Translator. (2026). *deep-translator: A flexible free and unlimited python tool to translate between different languages*. Retrieved from https://pypi.org/project/deep-translator
+* Mueller, A. (2023). *WordCloud for Python documentation*. Retrieved from https://amueller.github.io/word_cloud
