@@ -1,6 +1,6 @@
-# Auto Highlight Generator
-
 <div align="center">
+
+# Auto Highlight Generator
 
 **University of Petra** **Faculty of Administrative and Financial Sciences** **Department of Business Intelligence and Data Analytics**
 
@@ -17,7 +17,7 @@ Fares Sami Haddad | 202210768
 
 **Course: 307498 – Graduation Project** **Second Semester, 2025/2026**
 
-**Date** May 17, 2026
+**Date** 
 
 <br>
 <img src="images/Screenshot%202026-05-11%20020500.png" width="800">
@@ -274,7 +274,11 @@ The technology stack was meticulously chosen to ensure high responsiveness and a
 ## 11. Project Deployment Effort – Use Case
 **Use Case: Viral Content Production**
 
-Hosted on **Render**, the system provides a production-ready environment for media managers and content editors to scan long-form podcasts, interviews, or any YouTube video and instantly isolate the Top 3 Golden Moments.
+Deployed on **Streamlit Cloud**, the system is publicly accessible at:
+
+### 🚀 [https://auto-highlight.streamlit.app/](https://auto-highlight.streamlit.app/)
+
+The live platform provides a production-ready environment for media managers and content editors to scan long-form podcasts, interviews, or any YouTube video and instantly isolate the Top 3 Golden Moments — directly from the browser with no installation required.
 
 **Zero-Friction Highlight Review Workflow:**
 1. Editor pastes a YouTube URL into the sidebar
@@ -313,6 +317,7 @@ Key findings from testing across multiple video categories:
 * Google Cloud. (2026). *YouTube Data API v3 Documentation*. Retrieved from https://developers.google.com/youtube/v3
 * Hartmann, J. (2022). *Emotion English DistilRoBERTa-base*. HuggingFace. Retrieved from https://huggingface.co/j-hartmann/emotion-english-distilroberta-base
 * Streamlit Inc. (2026). *Streamlit: The fastest way to build data apps*. Retrieved from https://streamlit.io
+* Streamlit Inc. (2026). *Streamlit Cloud: Deploy and share data apps*. Retrieved from https://streamlit.io/cloud
 * Pandas Development Team. (2026). *Pandas: Powerful Python data analysis toolkit*. Retrieved from https://pandas.pydata.org
 * Plotly Technologies Inc. (2026). *Plotly Python graphing library*. Retrieved from https://plotly.com/python
 * Deep Translator. (2026). *deep-translator: A flexible free and unlimited python tool to translate between different languages*. Retrieved from https://pypi.org/project/deep-translator
